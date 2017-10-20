@@ -4,8 +4,9 @@ Floats suck. So lets make an analogue fractional calculator. Join in!
 ### v0.0.2
 With a deliberately failing test. Get it passing! Send a pull request!
 ## install the project
+First fork the project on GitHub. Then, 
 ```
-git clone https://github.com/delboy1978uk/phi
+git clone https://github.com/your-github-name/phi
 cd phi
 composer install
 ```
