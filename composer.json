@@ -1,0 +1,22 @@
+{
+    "name": "delboy1978uk/blank",
+    "description": "An analogue fractional calculator",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Derek McLean",
+            "email": "delboy1978uk@gmail.com"
+        }
+    ],
+    "require": {
+    },
+    "require-dev":{
+        "codeception/codeception":"dev-master"
+    },
+    "autoload":{
+        "psr-4":{
+            "Del\\Phi\\":"src/",
+            "DelTesting\\Phi\\":"tests/unit/phi/"
+        }
+    }
+}
