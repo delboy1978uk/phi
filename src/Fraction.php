@@ -57,7 +57,6 @@ class Fraction
     public function setNumerator($numerator)
     {
         $this->numerator = $numerator;
-        $this->refactor();
         return $this;
     }
 
@@ -76,13 +75,17 @@ class Fraction
     public function setDenominator($denominator)
     {
         $this->denominator = $denominator;
-        $this->refactor();
         return $this;
     }
 
     private function refactor()
     {
-        $remainder = $this->numerator % $this->denominator;
+        if ($this->numerator >= $this->denominator) {
+            for ($x = $this->numerator; $x >= $this->denominator; $x = $x - $this->denominator) {
+                $this->whole ++;
+            }
+            $this->numerator = 0;
+        }
     }
 
     /**
@@ -116,14 +119,14 @@ class Fraction
      */
     public function __toString()
     {
-        if ($this->isInteger() && $this->numerator > 0) {
-            return (string) ($this->whole + 1);
-        }
+        $this->refactor();
 
         // if the whole is 0, don't display it
-        $whole = $this->whole == 0 ? '' : $this->whole.' ';
+        $whole = $this->whole == 0 ? '' : $this->whole;
+        $fraction = $this->numerator > 0 ? $this->numerator.'/'.$this->denominator : '';
+        $space = ($whole && $fraction) ? ' ' : '';
 
-        return $whole.$this->numerator.'/'.$this->denominator;
+        return $whole.$space.$fraction;
     }
 
     /**
