@@ -87,7 +87,8 @@ class Fraction
      */
     public function __toString()
     {
-        return $this->whole.' '.$this->numerator.'/'.$this->denominator;
+        $whole = $this->whole == 0 ? '' : $this->whole.' ';
+        return $whole.$this->numerator.'/'.$this->denominator;
     }
 
     /**
