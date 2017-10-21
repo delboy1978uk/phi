@@ -80,12 +80,26 @@ class Fraction
 
     private function refactor()
     {
+        // 9/8 would become 1 1/8 for instance
         if ($this->numerator >= $this->denominator) {
-            for ($x = $this->numerator; $x >= $this->denominator; $x = $x - $this->denominator) {
-                $this->whole ++;
-            }
-            $this->numerator = 0;
+            $this->refactorWhole();
         }
+        $this->refactorFraction();
+    }
+
+    private function refactorWhole()
+    {
+        for ($x = $this->numerator; $x >= $this->denominator; $x = $x - $this->denominator) {
+            $this->whole ++;
+            $this->numerator -= $this->denominator;
+        }
+    }
+
+    private function refactorFraction()
+    {
+        /**
+         *  6/12 needs refactored to 1/2 for example
+         */
     }
 
     /**

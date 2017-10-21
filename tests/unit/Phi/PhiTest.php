@@ -31,6 +31,7 @@ class PhiTest extends Test
             [0,3,3,'1'],
             [0,8,4,'2'],
             [0,6,12,'1/2'],
+            [0,9,8,'1 1/8'],
         ];
 
         foreach ($dataset as $row) {
