@@ -28,6 +28,8 @@ class PhiTest extends Test
             [2,2,3,'2 2/3'],
             [0,3,4,'3/4'],
             [3,3,3,'4'],
+            [0,3,3,'1'],
+            [0,8,4,'2'],
         ];
 
         foreach ($dataset as $row) {
@@ -47,6 +49,8 @@ class PhiTest extends Test
             [2,2,3,2.66666666666],
             [0,3,4,0.75],
             [3,3,3,4],
+            [0,3,3,'1'],
+            [0,8,4,'2'],
         ];
 
         foreach ($dataset as $row) {
@@ -66,6 +70,8 @@ class PhiTest extends Test
             [2,2,3,false],
             [0,3,4,false],
             [3,3,3,true],
+            [0,3,3,true],
+            [0,8,4,true],
         ];
 
         foreach ($dataset as $row) {
