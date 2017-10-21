@@ -13,11 +13,15 @@ class Fraction
     /** @var int $denominator */
     private $denominator;
 
-    public function __construct($whole = 1, $numerator = 1, $denominator = 1)
+    /** @var bool $negative */
+    private $negative;
+
+    public function __construct($whole = 0, $numerator = 0, $denominator = 1)
     {
         $this->whole = $whole;
         $this->numerator = $numerator;
         $this->denominator = $denominator;
+        $this->negative = false;
     }
 
     /**
@@ -71,6 +75,24 @@ class Fraction
     public function setDenominator($denominator)
     {
         $this->denominator = $denominator;
+        return $this;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isNegative()
+    {
+        return $this->negative;
+    }
+
+    /**
+     * @param bool $negative
+     * @return Fraction
+     */
+    public function setNegative($negative)
+    {
+        $this->negative = $negative;
         return $this;
     }
 
