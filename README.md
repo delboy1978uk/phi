@@ -1,7 +1,7 @@
 # phi
 [![Build Status](https://travis-ci.org/delboy1978uk/phi.png?branch=master)](https://travis-ci.org/delboy1978uk/phi) [![Code Coverage](https://scrutinizer-ci.com/g/delboy1978uk/phi/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/delboy1978uk/phi/?branch=master) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/delboy1978uk/phi/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/delboy1978uk/phi/?branch=master) <br />
 Floats suck. So lets make an analogue fractional calculator. Join in!
-### v0.0.2
+### v0.0.3
 With a deliberately failing test. Get it passing! Send a pull request!
 ## install the project
 First fork the project on GitHub. Then, 

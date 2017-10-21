@@ -109,7 +109,9 @@ class Fraction
      */
     public function __toString()
     {
+        // if the whole is 0, don't display it
         $whole = $this->whole == 0 ? '' : $this->whole.' ';
+
         return $whole.$this->numerator.'/'.$this->denominator;
     }
 
