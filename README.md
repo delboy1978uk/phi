@@ -19,3 +19,21 @@ You either build, break, or fix. Get the test passing, or add a new set of data
 which will make the tests fail. 
 ## send your pull request
 Because contributing to open source is fun!
+## usage
+Right now, there is only one class, `Del\Phi\Fraction`. An object representing a fraction, comprising
+of a whole number, and fractional numerator and denominator.
+```php
+<?php 
+
+use Del\Phi\Fraction;
+
+$phi = new Fraction();
+$phi->setWhole(3)
+    ->setNumerator(3)
+    ->setDenominator(4);
+
+echo $phi->toDecimal(); // float 3.75
+echo $phi;              // string '3 3/4'
+```
+More functionality will be made soon, but first we need tests which will break the current logic 
+and give us unexpected output! (for example '3 3/3' should really output 4) 
