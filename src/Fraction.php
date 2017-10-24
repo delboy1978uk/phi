@@ -124,7 +124,7 @@ class Fraction
 
         // greatest common denominator is the highest number (last in the array)
         $gcd = array_pop($commonDenominators);
-        
+
         return $gcd;
     }
 
