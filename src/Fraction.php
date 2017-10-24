@@ -84,22 +84,64 @@ class Fraction
         if ($this->numerator >= $this->denominator) {
             $this->refactorWhole();
         }
-        $this->refactorFraction();
+        if ($this->numerator > 0) {
+            $this->refactorFraction();
+        }
     }
 
     private function refactorWhole()
     {
+        // decrement $x and the numerator by the denominator each loop, and add to the whole
         for ($x = $this->numerator; $x >= $this->denominator; $x = $x - $this->denominator) {
             $this->whole ++;
             $this->numerator -= $this->denominator;
         }
     }
 
+    /**
+     * a/b × c/d = ac/bd
+     */
     private function refactorFraction()
     {
-        /**
-         *  6/12 needs refactored to 1/2 for example
-         */
+        $gcd = $this->getGreatestCommonDenominator($this->numerator, $this->denominator);
+        $this->numerator = $this->numerator / $gcd;
+        $this->denominator = $this->denominator / $gcd;
+    }
+
+    /**
+     * @param int $x
+     * @param int $y
+     * @return int
+     */
+    private function getGreatestCommonDenominator($x, $y)
+    {
+        // first get the common denominators of both numerator and denominator
+        $factorsX = $this->getFactors($x);
+        $factorsY = $this->getFactors($y);
+
+        // common denominators will be in both arrays, so get the intersect
+        $commonDenominators = array_intersect($factorsX, $factorsY);
+
+        // greatest common denominator is the highest number (last in the array)
+        $gcd = array_pop($commonDenominators);
+        
+        return $gcd;
+    }
+
+    /**
+     * @param int $num
+     * @return array The common denominators of $num
+     */
+    private function getFactors($num)
+    {
+        $factors = [];
+        // get factors of the numerator
+        for ($x = 1; $x <= $num; $x ++) {
+            if ($num % $x == 0) {
+                $factors[] = $x;
+            }
+        }
+        return $factors;
     }
 
     /**
@@ -151,6 +193,8 @@ class Fraction
         /*
          * a divide symbol. so this is broken and will need refactoring to be accurate. ;-)
          */
-        return $this->whole + ($this->numerator / $this->denominator);
+        $decimal = $this->numerator / $this->denominator;
+        $number =  $this->whole + $decimal;
+        return $number;
     }
 }
