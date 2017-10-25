@@ -81,10 +81,10 @@ class Fraction
     private function refactor()
     {
         // 9/8 would become 1 1/8 for instance
-        if ($this->numerator >= $this->denominator) {
+        if ($this->numerator >= $this->denominator && $this->denominator > 0) {
             $this->refactorWhole();
         }
-        if ($this->numerator > 0) {
+        if ($this->numerator > 0 && $this->denominator > 0) {
             $this->refactorFraction();
         }
     }
@@ -100,11 +100,9 @@ class Fraction
 
     private function refactorFraction()
     {
-        if ($this->numerator > 0 && $this->denominator > 0 ) {
-            $gcd = $this->getGreatestCommonDenominator($this->numerator, $this->denominator);
-            $this->numerator = $this->numerator / $gcd;
-            $this->denominator = $this->denominator / $gcd;
-        }
+        $gcd = $this->getGreatestCommonDenominator($this->numerator, $this->denominator);
+        $this->numerator = $this->numerator / $gcd;
+        $this->denominator = $this->denominator / $gcd;
     }
 
     /**
