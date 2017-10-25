@@ -81,12 +81,30 @@ class Fraction
     private function refactor()
     {
         // 9/8 would become 1 1/8 for instance
-        if ($this->numerator >= $this->denominator && $this->denominator > 0) {
+        if ($this->shouldRefactorWhole()) {
             $this->refactorWhole();
         }
-        if ($this->numerator > 0 && $this->denominator > 0) {
+        if ($this->shouldRefactorFraction()) {
             $this->refactorFraction();
         }
+    }
+
+    /**
+     * @return bool
+     */
+    private function shouldRefactorWhole()
+    {
+        return $this->numerator >= $this->denominator
+            && $this->denominator > 0;
+    }
+
+    /**
+     * @return bool
+     */
+    private function shouldRefactorFraction()
+    {
+        return $this->numerator > 0
+            && $this->denominator > 0;
     }
 
     private function refactorWhole()
