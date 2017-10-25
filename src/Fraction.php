@@ -176,7 +176,7 @@ class Fraction
 
         // if the whole is 0, don't display it
         $whole = $this->whole == 0 ? '' : $this->whole;
-        $fraction = $this->numerator > 0 ? $this->numerator.'/'.$this->denominator : '';
+        $fraction = $this->numerator > 0 && $this->denominator > 0 ? $this->numerator.'/'.$this->denominator : '';
         $space = ($whole && $fraction) ? ' ' : '';
 
         return empty($whole.$space.$fraction) ? '0' : $whole.$space.$fraction;
