@@ -179,7 +179,7 @@ class Fraction
         $fraction = $this->numerator > 0 ? $this->numerator.'/'.$this->denominator : '';
         $space = ($whole && $fraction) ? ' ' : '';
 
-        return $whole.$space.$fraction;
+        return empty($whole.$space.$fraction) ? '0' : $whole.$space.$fraction;
     }
 
     /**
