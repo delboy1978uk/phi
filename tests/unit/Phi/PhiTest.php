@@ -90,4 +90,14 @@ class PhiTest extends Test
             $this->assertEquals($row[3], $phi->isInteger());
         }
     }
+
+    public function testSetNegative()
+    {
+        $phi = new Fraction();
+        $this->assertFalse($phi->isNegative());
+        $phi->setNegative(true);
+        $this->assertTrue($phi->isNegative());
+        $phi->setNegative(false);
+        $this->assertFalse($phi->isNegative());
+    }
 }
