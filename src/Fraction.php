@@ -193,10 +193,35 @@ class Fraction
         $this->refactor();
 
         // if the whole is 0, don't display it
-        $whole = $this->whole == 0 ? '' : $this->whole;
-        $fraction = $this->numerator > 0 && $this->denominator > 0 ? $this->numerator.'/'.$this->denominator : '';
-        $space = ($whole && $fraction) ? ' ' : '';
+        $whole = $this->getStringWhole();
+        $fraction = $this->getStringFraction();
+        return $this->formatString($whole, $fraction);
+    }
 
+    /**
+     * @return string
+     */
+    private function getStringWhole()
+    {
+        return $this->whole == 0 ? '' : (string) $this->whole;
+    }
+
+    /**
+     * @return string
+     */
+    private function getStringFraction()
+    {
+        return $this->numerator > 0 && $this->denominator > 0 ? $this->numerator.'/'.$this->denominator : '';;
+    }
+
+    /**
+     * @param string $whole
+     * @param string $fraction
+     * @return string
+     */
+    private function formatString($whole, $fraction)
+    {
+        $space = ($whole && $fraction) ? ' ' : '';
         return empty($whole.$space.$fraction) ? '0' : $whole.$space.$fraction;
     }
 
