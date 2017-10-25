@@ -98,14 +98,13 @@ class Fraction
         }
     }
 
-    /**
-     * a/b × c/d = ac/bd
-     */
     private function refactorFraction()
     {
-        $gcd = $this->getGreatestCommonDenominator($this->numerator, $this->denominator);
-        $this->numerator = $this->numerator / $gcd;
-        $this->denominator = $this->denominator / $gcd;
+        if ($this->numerator > 0 && $this->denominator > 0 ) {
+            $gcd = $this->getGreatestCommonDenominator($this->numerator, $this->denominator);
+            $this->numerator = $this->numerator / $gcd;
+            $this->denominator = $this->denominator / $gcd;
+        }
     }
 
     /**
