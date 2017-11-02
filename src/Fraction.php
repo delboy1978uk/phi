@@ -227,9 +227,29 @@ class Fraction
      */
     private function formatString($whole, $fraction)
     {
-        $space = ($whole && $fraction) ? ' ' : '';
-        $negative = $this->isNegative() ? '-' : '';
+        $space = $this->getSpace($whole, $fraction);
+        $negative = $this->getNegative();
         return empty($negative.$whole.$space.$fraction) ? '0' : $negative.$whole.$space.$fraction;
+    }
+
+    /**
+     * @param $whole
+     * @param $fraction
+     * @return string
+     */
+    private function getSpace($whole, $fraction)
+    {
+        return ($whole && $fraction) ? ' ' : '';
+    }
+
+    /**
+     * @param $whole
+     * @param $fraction
+     * @return string
+     */
+    private function getNegative()
+    {
+        return $this->isNegative() ? '-' : '';
     }
 
     /**
