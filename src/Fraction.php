@@ -2,6 +2,9 @@
 
 namespace Del\Phi;
 
+use Del\Phi\Exception\PhiException;
+use InvalidArgumentException;
+
 class Fraction
 {
     /** @var int $whole */
@@ -38,6 +41,7 @@ class Fraction
      */
     public function setWhole($whole)
     {
+        $this->throwExceptionIfNegative($whole);
         $this->whole = $whole;
         return $this;
     }
@@ -56,6 +60,7 @@ class Fraction
      */
     public function setNumerator($numerator)
     {
+        $this->throwExceptionIfNegative($numerator);
         $this->numerator = $numerator;
         return $this;
     }
@@ -74,6 +79,7 @@ class Fraction
      */
     public function setDenominator($denominator)
     {
+        $this->throwExceptionIfNegative($denominator);
         $this->denominator = $denominator;
         return $this;
     }
@@ -222,7 +228,8 @@ class Fraction
     private function formatString($whole, $fraction)
     {
         $space = ($whole && $fraction) ? ' ' : '';
-        return empty($whole.$space.$fraction) ? '0' : $whole.$space.$fraction;
+        $negative = $this->isNegative() ? '-' : '';
+        return empty($negative.$whole.$space.$fraction) ? '0' : $negative.$whole.$space.$fraction;
     }
 
     /**
@@ -235,6 +242,18 @@ class Fraction
          */
         $decimal = $this->numerator / $this->denominator;
         $number =  $this->whole + $decimal;
+        $number = $this->isNegative() ? $number - $number - $number : $number;
         return $number;
+    }
+
+    /**
+     * @param $num
+     * @throws PhiException
+     */
+    public function throwExceptionIfNegative($num)
+    {
+        if ($num < 0) {
+            throw new PhiException(PhiException::ERROR_NEGATIVE_NUMBER);
+        }
     }
 }
