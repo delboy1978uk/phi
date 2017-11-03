@@ -229,7 +229,7 @@ class Fraction
     {
         $space = $this->getSpace($whole, $fraction);
         $negative = $this->getNegative();
-        return empty($negative.$whole.$space.$fraction) ? '0' : $negative.$whole.$space.$fraction;
+        return empty($whole.$space.$fraction) ? '0' : $negative.$whole.$space.$fraction;
     }
 
     /**
